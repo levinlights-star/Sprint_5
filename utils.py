@@ -15,19 +15,15 @@ from data.config import BASE_URL, LOGIN_URL
 
 # Функция для авторизации пользователья на странице {BASE_URL}login
 def login_user(browser):
-    if browser.current_url == LOGIN_URL:
-        browser.find_element(
-            *LOGIN_PAGE_LOCATORS["email"]).send_keys(VALID_USER["email"])
-        browser.find_element(
-            *LOGIN_PAGE_LOCATORS["password"]).send_keys(VALID_USER["password"])
+    browser.current_url == LOGIN_URL
+    browser.find_element(
+        *LOGIN_PAGE_LOCATORS["email"]).send_keys(VALID_USER["email"])
+    browser.find_element(
+        *LOGIN_PAGE_LOCATORS["password"]).send_keys(VALID_USER["password"])
 
-        browser.find_element(*LOGIN_PAGE_LOCATORS["enter_button"]).click()
+    browser.find_element(*LOGIN_PAGE_LOCATORS["enter_button"]).click()
 
-        WebDriverWait(browser, 10).until(EC.url_to_be(BASE_URL))
-
-    else:
-        print(
-            f"Не на странице логина, авторизация невозможна: {browser.current_url}")
+    WebDriverWait(browser, 10).until(EC.url_to_be(BASE_URL))
 
 
 # Функция для генерации email
