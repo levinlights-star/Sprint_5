@@ -7,7 +7,7 @@ HEADERS_LOCATORS = {
     # Лента заказов
     "feed": (By.XPATH, "//p[contains(@class, 'AppHeader_header__linkText') and contains(text(), 'Лента Заказов')]"),
     # Клик по лого
-    "logo": (By.XPATH, '//*[@id="root"]/div/header/nav/div'),
+    "logo": (By.CSS_SELECTOR, "div.AppHeader_header__logo__2D0X2 a"),
     # Личный кабинет
     "account_link": (By.XPATH, "//p[contains(@class, 'AppHeader_header__linkText') and contains(text(), 'Личный Кабинет')]")
 }
@@ -17,7 +17,7 @@ HEADERS_LOCATORS = {
 REGISTER_PAGE_LOCATORS = {
     # Форма регистрации
     # Имя
-    "name": (By.NAME, "name"),
+    "name": (By.XPATH, "//label[contains(text(), 'Имя')]/following::input"),
     # Email
     "email": (By.XPATH, "//label[contains(text(),'Email')]/following::input"),
     # Пароль
@@ -41,7 +41,7 @@ MAIN_PAGE_LOCATORS = {
     # Кнопка "Оформить заказ", доступна авторизованному пользователю
     "order_button": (By.XPATH, "//button[text()='Оформить заказ']"),
     # Заголовок "Соберите бургер"
-    "h1_burgers": (By.XPATH, '//*[@id="root"]/div/main/section[1]/h1'),
+    "h1_burgers": (By.XPATH, "//h1[contains(text(), 'Соберите бургер')]"),
     # Табы ингридиетов (Булки/Соусы/Начинки)
     "ingridient_list": (By.CSS_SELECTOR, "ul[class*='BurgerIngredients_ingredients__list']"),
     # Булки
@@ -70,7 +70,7 @@ LOGIN_PAGE_LOCATORS = {
 # Локаторы на странице редактирования профиля {BASE_URL}/account/profile
 PROFILE_PAGE_LOCATORS = {
     # Кнопка "Сохранить"
-    "save_button": (By.XPATH, '//*[@id="root"]/div/main/div/div/div/div/button[2]'),
+    "save_button": (By.XPATH, "//button[contains(text(), 'Сохранить')]"),
     # Кнопка "Выйти"
     "exit_button": (By.XPATH, '//button[text()="Выход"]')
 }
