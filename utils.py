@@ -28,7 +28,6 @@ def login_user(browser, email, password):
 # Функция для регистрации пользователя
 def register_user(browser):
     browser.get(REGISTRATION_URL)
-
     browser.find_element(
         *REGISTER_PAGE_LOCATORS["name"]).send_keys(VALID_USER["name"])
     login = generate_email()
@@ -37,8 +36,9 @@ def register_user(browser):
     password = VALID_USER["password"]
     browser.find_element(
         *REGISTER_PAGE_LOCATORS["password"]).send_keys(password)
-    browser.find_element(*REGISTER_PAGE_LOCATORS["register_button"]).click()
-
+    reg_btn = browser.find_element(
+        *REGISTER_PAGE_LOCATORS["register_button"])
+    browser.execute_script("arguments[0].click();", reg_btn)
     WebDriverWait(browser, 5).until(EC.url_contains("/login"))
     return login, password
 
