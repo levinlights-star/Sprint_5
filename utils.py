@@ -62,7 +62,5 @@ def get_ingredient(browser, list_index, item_index):
 
 # Функция клика по табам в конструкторе бургера
 def open_tab(browser, tab_locator):
-    WebDriverWait(browser, 10).until(
-        EC.element_to_be_clickable(tab_locator)
-    ).click()
-    time.sleep(2)  # без нее не прогружаются элементы и тесты падают
+    tab = WebDriverWait(browser, 10).until(EC.visibility_of_element_located(tab_locator))
+    browser.execute_script("arguments[0].click();", tab)
